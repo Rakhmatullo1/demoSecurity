@@ -26,6 +26,8 @@ public class AuthenticationController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<String> auth(@RequestBody AuthenticationRequest request) {
+
+
         manager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         final UserDetails user = userDAO.findByUserEmail(request.getEmail());
         System.out.println(user);
